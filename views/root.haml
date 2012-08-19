@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %link{href: "css/main.css", type: "text/css", rel: "stylesheet"}
+  %body  
+    .container
+      .hero-unit
+        %h1 Hood Words
+        %p Wanna be a g? Then get your random hood word to get you 'on point'
+      .row
+        .span12
+          %dl.dl-horizontal.hood-word
+            %dt
+              Word:
+            %dd
+              #{@chosen_word.capitalize}
+          %dl.dl-horizontal
+            %dt
+              Definition:
+            %dd
+              #{@definition}
+      %hr
+      %footer
+        %p &copy Orlando C
