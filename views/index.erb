@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Sinatra AJAX Example</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$("#btn").click(function(event){
+					$("#result").fadeOut("slow", function(){
+						$.get('/ajax-call', function(data){
+							$("#result").html(data);
+						});
+					});
+					$("#result").fadeIn("slow");
+				});
+
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<h1>AJAX with Sinatra & Jquery Example</h1>
+
+		<div id="result"><p>Click To Test</p></div>
+		<input id="btn" type="button" value="AJAX"/>					
+	</body>
+</html>

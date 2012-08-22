@@ -1,0 +1,9 @@
+@import url('bootstrap.min.css');
+
+body {
+  margin: 20px 0;
+}
+
+.content {
+  font-size: 20px;
+}

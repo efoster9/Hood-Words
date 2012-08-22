@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %link{href: "css/main.css", type: "text/css", rel: "stylesheet"}
+    %script{:type => "text/javascript",
+        :src  => "http://code.jquery.com/jquery.min.js"}
+  %body  
+    .container
+      .hero-unit
+        %h1 Hood Words
+        %p Wanna be a g? Then get your random hood word to get you 'on point'
+      .content
+        .row
+          .span12
+            %dl.dl-horizontal.hood-word
+              %dt
+                Word:
+              %dd
+                %select
+                  - (@hood_words).each do |i|
+                    %option{:value => i}= i
+                /#{@chosen_word.capitalize}
+
+            %dl.dl-horizontal
+              %dt
+                Definition:
+              %dd
+                %div{id: "result"} No defs
+                /#{@definition}
+            %dl.dl-horizontal
+              %dt
+                %input{type: "button", id: "btn", value: "AJAX"} 
+      %hr
+      %footer
+        %p &copy Orlando C
+      :javascript
+      $(document).ready(function(){
+
+
+        $("#btn").click(function(event){
+          event.preventDefault(); 
+          
+          var word = $('select').val();
+          $("#result").fadeOut(2000, function(){
+            $.get('/ajax-call/' + word, function(data){
+              $("#result").html(data);
+            });
+          });
+          $("#result").fadeIn(1000);
+        });
+
+      });
